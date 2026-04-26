@@ -7,18 +7,20 @@ const ControlledFields = () => {
     e.preventDefault();
   };
 
-  //password state
+  //password state(i)
   const [password, setPassword] = useState("");
 
-  //error state for password
+  //error state for password(ii)
   const [error, setError] = useState("");
 
+  //event handling function(iii)
   const handlePasswordOnChange = (e) => {
-    const value = e.target.value;
+    const value = e.target.value;//getting the input value,1
 
     console.log(value);
-    setPassword(value);
+    setPassword(value);//setting the value to the variable,2
 
+    //using condition for the error state,3
     if (value.includes(" ")) {
       setError("Password cant contain space");
     } else if (value.length < 6) {
@@ -34,6 +36,7 @@ const ControlledFields = () => {
   //error state for email
   const [error2, setError2] = useState("");
 
+   //event handling function
   const handleEmailOnChange = (e) => {
     const value = e.target.value;
     console.log(e.target.value);
@@ -66,7 +69,7 @@ const ControlledFields = () => {
         <input type="submit" value="submit" />
       </form>
 
-      <p style={{ color: "red" }}>{error}</p>
+      <p style={{ color: "red" }}>{error}</p>{/* showing the output for the error state on the UI, 4 */}
       <p style={{ color: "red" }}>{error2}</p>
     </div>
   );
