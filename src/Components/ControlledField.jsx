@@ -1,32 +1,51 @@
-import React, { useState } from "react";
+import { useState } from "react";
+
+//
 
 const ControlledField = () => {
+  
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(password);
   };
 
+  //password state
   const [password, setPassword] = useState("");
+
+  //error state
+  const [error, setError] = useState("");
+
   const handlePasswordOnChange = (e) => {
-    console.log(e.target.value);
-    setPassword(e.target.value);
+    const value = e.target.value; //what is being typed into the password inut field
+
+    console.log(value); //returns each character that user is typing.
+    setPassword(value); //setting the value for the 'password' variable based on what user is typing real time.
+
+    if (value.includes(" ")) {
+      setError("Password cant contain space");
+    } else if (value.length < 6) {
+      setError("Password must contain 6 characters");
+    } else {
+      setError("");
+    }
   };
 
   return (
     <div>
-      <form action="" onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <input type="email" name="" placeholder="email" required />
         <br />
         <input
           type="password"
-          name=""
           placeholder="password"
-          onChange={handlePasswordOnChange}
           defaultValue={password}
-          required
+          onChange={handlePasswordOnChange}
         />
         <br />
         <input type="submit" value="submit" />
       </form>
+
+      <p style={{ color: "red" }}>{error}</p>
     </div>
   );
 };

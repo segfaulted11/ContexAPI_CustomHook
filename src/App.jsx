@@ -9,8 +9,8 @@ function App() {
     <>
 
 {/* <SimpleForm/> */}
-<FormAction/>
-{/* <ControlledField/> */}
+{/* <FormAction/> */}
+<ControlledField/>
 
     </>
   )
